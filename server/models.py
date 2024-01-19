@@ -9,7 +9,7 @@ metadata = MetaData(naming_convention={
 db = SQLAlchemy(metadata=metadata)
 
 class Bakery(db.Model, SerializerMixin):
-    __tablename__ = 'bakeries'
+    __tablename__ = 'bakeries.baked_goods'
 
     serialize_rules = ('-baked_goods.bakery',)
 
@@ -24,7 +24,7 @@ class Bakery(db.Model, SerializerMixin):
         return f'<Bakery {self.name}>'
 
 class BakedGood(db.Model, SerializerMixin):
-    __tablename__ = 'baked_goods'
+    __tablename__ = 'baked_goods.bakery'
 
     serialize_rules = ('-bakery.baked_goods',)
 
